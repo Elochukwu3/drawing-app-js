@@ -3,6 +3,7 @@ const canvas =  document.getElementById("canvas");
 let colorBtn = document.querySelectorAll('.option');
 colo_picker = document.getElementById('color-picker');
 fillColor = document.getElementById('fill-color');
+brushSlider = document.getElementById('sliderRange');
 toolBtn = document.querySelectorAll('.tool');
 ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn];
@@ -68,18 +69,22 @@ function initiateDrawing(e) {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 };
 const drawingProgress = (e)=>{
-    if (!isDrawing) return;
-    ctx.putImageData(snapshot, 0, 0)
-    if (selectedTool === "brush") {
-        ctx.strokeStyle = selectedColor;
-        console.log("bruusu");
-    } else if (selectedTool === 'eraser') {
-        ctx.strokeStyle = "white";
+    if(selectedTool === "brush" || selectedTool === "eraser") {
+        // if selected tool is eraser then set strokeStyle to white 
+        // to paint white color on to the existing canvas content else set the stroke color to selected color
+        ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
+        ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
+        ctx.stroke(); // drawing/filling line with color
+    } else if(selectedTool === "rectangle"){
+        drawRectangle(e);
+    } else if(selectedTool === "circle"){
+        // drawCircle(e);
+    } else {
+        // drawTriangle(e);
     }
-    else if(selectedTool === 'rectangle') drawRectangle(e);
       
 }
 
 window.addEventListener("mousedown", initiateDrawing)
 window.addEventListener("mouseup", drawingProgress)
-window.addEventListener("mousemove", ()=> !isDrawing)
+window.addEventListener("mousemove", ()=> isDrawing = false )
