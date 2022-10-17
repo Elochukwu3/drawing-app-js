@@ -1,13 +1,15 @@
 
-const canvas =  document.getElementById("canvas");
-let colorBtn = document.querySelectorAll('.option');
-colo_picker = document.getElementById('color-picker');
-fillColor = document.getElementById('fill-color');
-brushSlider = document.getElementById('sliderRange');
-toolBtn = document.querySelectorAll('.tool');
-clearCanvas = document.querySelector('.clear-canvas')
-save_btn = document.querySelector('.save-img')
+const canvas =  document.getElementById("canvas"),
+
+colo_picker = document.getElementById('color-picker'),
+fillColor = document.getElementById('fill-color'),
+brushSlider = document.getElementById('sliderRange'),
+clearCanvas = document.querySelector('.clear-canvas'),
+save_btn = document.querySelector('.save-img');
+let toolBtn = document.querySelectorAll('.tool'),
+colorBtn = document.querySelectorAll('.option'),
 ctx = canvas.getContext("2d");
+
 colorBtn = [...colorBtn];
 toolBtn =[...toolBtn]
 
@@ -90,13 +92,12 @@ function initiateDrawing(e) {
     ctx.fillStyle = selectedColor; 
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 };
+
 const drawingProgress = (e)=>{
     if(selectedTool === "brush" || selectedTool === "eraser") {
-        // if selected tool is eraser then set strokeStyle to white 
-        // to paint white color on to the existing canvas content else set the stroke color to selected color
         ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
-        ctx.lineTo(e.offsetX, e.offsetY); // creating line according to the mouse pointer
-        ctx.stroke(); // drawing/filling line with color
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
     } else if(selectedTool === "rectangle"){
         drawRectangle(e);
     } else if(selectedTool === "circle"){
