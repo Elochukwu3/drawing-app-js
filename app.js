@@ -70,15 +70,10 @@ function initiateDrawing(e) {
 const drawingProgress = (e)=>{
     if (!isDrawing) return;
     ctx.putImageData(snapshot, 0, 0)
-    switch (selectedTool) {
-        case "rectangle":
-            return{
-                drawRectangle(e)
-            };
-        case "cicle"
-    
-        default:
-            break;
+    if (selectedTool === "brush") {
+        ctx.strokeStyle = selectedColor
+    } else if (selectedToll === 'eraser') {
+        ctx.strokeStyle = "#ffff";
     }
       
 }
