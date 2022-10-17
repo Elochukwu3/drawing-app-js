@@ -5,6 +5,8 @@ colo_picker = document.getElementById('color-picker');
 fillColor = document.getElementById('fill-color');
 brushSlider = document.getElementById('sliderRange');
 toolBtn = document.querySelectorAll('.tool');
+clearCanvas = document.querySelector('.clear-canvas')
+clearCanvas = document.querySelector('.clear-canvas')
 ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn];
 toolBtn =[...toolBtn]
@@ -50,6 +52,8 @@ toolBtn.forEach(tool=>{
         selectedTool = tool.id;
     })
 })
+brushSlider.addEventListener('change', ()=> brushWidth = brushSlider.value)
+console.log(brushWidth);
 
 function drawRectangle(e) {
 if (!fillColor.checked) {
@@ -84,6 +88,17 @@ const drawingProgress = (e)=>{
     }
       
 }
+clearCanvas.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // clearing whole canvas
+    setCanvasBackground();
+});
+
+saveImg.addEventListener("click", () => {
+    const link = document.createElement("a"); // creating <a> element
+    link.download = `${Date.now()}.jpg`; // passing current date as link download value
+    link.href = canvas.toDataURL(); // passing canvasData as link href value
+    link.click(); // clicking link to download image
+});
 
 canvas.addEventListener("mousedown", initiateDrawing)
 canvas.addEventListener("mousemove", drawingProgress)
