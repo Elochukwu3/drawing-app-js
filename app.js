@@ -70,10 +70,12 @@ function initiateDrawing(e) {
 const drawingProgress = (e)=>{
     if (!isDrawing) return;
     ctx.putImageData(snapshot, 0, 0)
-    switch (key) {
-        case value:
-            
-            break;
+    switch (selectedTool) {
+        case "rectangle":
+            return{
+                drawRectangle(e)
+            };
+        case "cicle"
     
         default:
             break;
