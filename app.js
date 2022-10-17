@@ -7,9 +7,12 @@ ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn];
 toolBtn =[...toolBtn]
 
+let prevMouseX, prevMouseY, snapshot,
+isDrawing = false,
 selectedColor = "#000",
 brushWidth = 7;
-selectedTool = "brush"
+selectedTool = "brush",
+
 window.addEventListener("load", ()=>{
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
