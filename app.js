@@ -85,6 +85,6 @@ const drawingProgress = (e)=>{
       
 }
 
-window.addEventListener("mousedown", initiateDrawing)
-window.addEventListener("mouseup", drawingProgress)
-window.addEventListener("mousemove", ()=> isDrawing = false )
+canvas.addEventListener("mousedown", initiateDrawing)
+canvas.addEventListener("mousemove", drawingProgress)
+canvas.addEventListener("mouseup", () => isDrawing = false);
