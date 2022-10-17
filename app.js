@@ -4,7 +4,8 @@ let colorBtn = document.querySelectorAll('.option');
 colo_picker = document.getElementById('color-picker');
 toolBtn = document.querySelectorAll('.tool');
 ctx = canvas.getContext("2d");
-colorBtn = [...colorBtn]
+colorBtn = [...colorBtn];
+toolBtn =[...toolBtn]
 
 selectedColor = "#000",
 brushWidth = 7;
@@ -34,4 +35,3 @@ colo_picker.addEventListener('change', (e)=>{
    listTag.style.background = e.target.value;
    listTag.click();
 })
-console.log(toolBtn);
