@@ -66,7 +66,6 @@ function initiateDrawing(e) {
     ctx.strokeStyle = selectedColor; 
     ctx.fillStyle = selectedColor; 
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    console.log(snapshot);
 };
 const drawingProgress = (e)=>{
     if (isDrawing) {
