@@ -57,7 +57,18 @@ if (!fillColor.checked) {
     return ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
 }    
 }
+function initiateDrawing(e) {
+    isDrawing = true;
+    prevMouseX = e.offsetX;
+    prevMouseY = e.offsetY;
+    ctx.beginPath();
+    ctx.lineWidth = brushWidth; 
+    ctx.strokeStyle = selectedColor; 
+    ctx.fillStyle = selectedColor; 
+    snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    console.log(snapshot);
+}
 
-window.addEventListener("mousedown", )
-window.addEventListener("mouseup", initiateDrwaing)
+window.addEventListener("mousedown", initiateDrawing)
+// window.addEventListener("mouseup", drawingProgress)
 window.addEventListener("mousemove", ()=> !isDrawing)
