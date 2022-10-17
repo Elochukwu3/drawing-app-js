@@ -68,9 +68,17 @@ function initiateDrawing(e) {
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 };
 const drawingProgress = (e)=>{
-    if (isDrawing) {
-        drawRectangle(e)
+    if (!isDrawing) return;
+    ctx.putImageData(snapshot, 0, 0)
+    switch (key) {
+        case value:
+            
+            break;
+    
+        default:
+            break;
     }
+      
 }
 
 window.addEventListener("mousedown", initiateDrawing)
