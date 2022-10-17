@@ -67,8 +67,13 @@ function initiateDrawing(e) {
     ctx.fillStyle = selectedColor; 
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
     console.log(snapshot);
+};
+const drawingProgress = (e)=>{
+    if (isDrawing) {
+        drawRectangle(e)
+    }
 }
 
 window.addEventListener("mousedown", initiateDrawing)
-// window.addEventListener("mouseup", drawingProgress)
+window.addEventListener("mouseup", drawingProgress)
 window.addEventListener("mousemove", ()=> !isDrawing)
