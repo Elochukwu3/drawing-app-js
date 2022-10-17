@@ -20,13 +20,11 @@ selectedTool = "brush",
 window.addEventListener("load", ()=>{
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-
-    canvaWidth = canvas.width;
-    canvaHeight = canvas.height;
     setBackground()
 })
 function setBackground() {
-  
+    canvaWidth = canvas.width;
+    canvaHeight = canvas.height;
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvaWidth, canvaHeight );
     ctx.fillStyle = selectedColor;  
@@ -63,7 +61,23 @@ if (!fillColor.checked) {
     return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
 }else{
     return ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
-}    
+} 
+const drawCircle = (e) => {
+    ctx.beginPath(); // creating new path to draw circle
+    // getting radius for circle according to the mouse pointer
+    let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX), 2) + Math.pow((prevMouseY - e.offsetY), 2));
+    ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI); // creating circle according to the mouse pointer
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // if fillColor is checked fill circle else draw border circle
+}
+
+const drawTriangle = (e) => {
+    ctx.beginPath(); // creating new path to draw circle
+    ctx.moveTo(prevMouseX, prevMouseY); // moving triangle to the mouse pointer
+    ctx.lineTo(e.offsetX, e.offsetY); // creating first line according to the mouse pointer
+    ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); // creating bottom line of triangle
+    ctx.closePath(); // closing path of a triangle so the third line draw automatically
+    fillColor.checked ? ctx.fill() : ctx.stroke(); // if fillColor is checked fill triangle else draw border
+}   
 }
 function initiateDrawing(e) {
     isDrawing = true;
@@ -85,9 +99,9 @@ const drawingProgress = (e)=>{
     } else if(selectedTool === "rectangle"){
         drawRectangle(e);
     } else if(selectedTool === "circle"){
-        // drawCircle(e);
+        drawCircle(e);
     } else {
-        // drawTriangle(e);
+        drawTriangle(e);
     }
       
 }
