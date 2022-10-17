@@ -71,10 +71,12 @@ const drawingProgress = (e)=>{
     if (!isDrawing) return;
     ctx.putImageData(snapshot, 0, 0)
     if (selectedTool === "brush") {
-        ctx.strokeStyle = selectedColor
-    } else if (selectedToll === 'eraser') {
-        ctx.strokeStyle = "#ffff";
+        ctx.strokeStyle = selectedColor;
+        console.log("bruusu");
+    } else if (selectedTool === 'eraser') {
+        ctx.strokeStyle = "white";
     }
+    else if(selectedTool === 'rectangle') drawRectangle(e);
       
 }
 
