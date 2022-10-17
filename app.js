@@ -3,6 +3,7 @@ const canvas =  document.getElementById("canvas");
 let colorBtn = document.querySelectorAll('.option');
 colo_picker = document.getElementById('color-picker')
 ctx = canvas.getContext("2d");
+colorBtn = [...colorBtn]
 
 selectedColor = "#000",
 brushWidth = 7;
@@ -18,7 +19,7 @@ window.addEventListener("load", ()=>{
     ctx.fillStyle = selectedColor;
 })
 
-colorBtn = [...colorBtn]
+
 colorBtn.forEach(btn=>{
     btn.addEventListener('click', ()=>{
         eachBtn = document.querySelector('.selected')
