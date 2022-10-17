@@ -1,7 +1,8 @@
 
 const canvas =  document.getElementById("canvas");
 let colorBtn = document.querySelectorAll('.option');
-colo_picker = document.getElementById('color-picker')
+colo_picker = document.getElementById('color-picker');
+toolBtn = document.querySelectorAll('.tool');
 ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn]
 
@@ -19,7 +20,6 @@ window.addEventListener("load", ()=>{
     ctx.fillStyle = selectedColor;
 })
 
-
 colorBtn.forEach(btn=>{
     btn.addEventListener('click', ()=>{
         eachBtn = document.querySelector('.selected')
@@ -34,3 +34,4 @@ colo_picker.addEventListener('change', (e)=>{
    listTag.style.background = e.target.value;
    listTag.click();
 })
+console.log(toolBtn);
