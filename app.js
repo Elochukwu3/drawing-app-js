@@ -9,6 +9,7 @@ toolBtn =[...toolBtn]
 
 selectedColor = "#000",
 brushWidth = 7;
+selectedTool = "brush"
 window.addEventListener("load", ()=>{
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -34,4 +35,14 @@ colo_picker.addEventListener('change', (e)=>{
    let listTag = colo_picker.parentElement;
    listTag.style.background = e.target.value;
    listTag.click();
+})
+// toolbtns function
+toolBtn.forEach(tool=>{
+    tool.addEventListener('click', ()=>{
+        activeTool = document.querySelector('.active');
+        activeTool.classList.remove('active');
+        tool.classList.add('active')
+        selectedTool = tool.id;
+        
+    })
 })
