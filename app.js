@@ -2,6 +2,7 @@
 const canvas =  document.getElementById("canvas");
 let colorBtn = document.querySelectorAll('.option');
 colo_picker = document.getElementById('color-picker');
+fillColor = document.getElementById('fill-color');
 toolBtn = document.querySelectorAll('.tool');
 ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn];
@@ -41,11 +42,22 @@ colo_picker.addEventListener('change', (e)=>{
 })
 // toolbtns function
 toolBtn.forEach(tool=>{
-    tool.addEventListener('click', ()=>{
+    tool.addEventListener('click', (e)=>{
         activeTool = document.querySelector('.active');
         activeTool.classList.remove('active');
         tool.classList.add('active')
         selectedTool = tool.id;
-        
     })
 })
+
+function drawRectangle(e) {
+if (!fillColor.checked) {
+    return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
+}else{
+    return ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
+}    
+}
+
+window.addEventListener("mousedown", )
+window.addEventListener("mouseup", initiateDrwaing)
+window.addEventListener("mousemove", ()=> !isDrawing)
