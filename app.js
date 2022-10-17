@@ -6,7 +6,7 @@ fillColor = document.getElementById('fill-color');
 brushSlider = document.getElementById('sliderRange');
 toolBtn = document.querySelectorAll('.tool');
 clearCanvas = document.querySelector('.clear-canvas')
-clearCanvas = document.querySelector('.clear-canvas')
+save_btn = document.querySelector('.save-img')
 ctx = canvas.getContext("2d");
 colorBtn = [...colorBtn];
 toolBtn =[...toolBtn]
@@ -23,11 +23,14 @@ window.addEventListener("load", ()=>{
 
     canvaWidth = canvas.width;
     canvaHeight = canvas.height;
-
+    setBackground()
+})
+function setBackground() {
+  
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvaWidth, canvaHeight );
-    ctx.fillStyle = selectedColor;
-})
+    ctx.fillStyle = selectedColor;  
+}
 
 colorBtn.forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -90,10 +93,10 @@ const drawingProgress = (e)=>{
 }
 clearCanvas.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clearing whole canvas
-    setCanvasBackground();
+    setBackground();
 });
 
-saveImg.addEventListener("click", () => {
+save_btn.addEventListener("click", () => {
     const link = document.createElement("a"); // creating <a> element
     link.download = `${Date.now()}.jpg`; // passing current date as link download value
     link.href = canvas.toDataURL(); // passing canvasData as link href value
