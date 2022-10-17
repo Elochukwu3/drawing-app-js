@@ -61,24 +61,25 @@ if (!fillColor.checked) {
     return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
 }else{
     return ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
-} 
+}   
+}
+
 const drawCircle = (e) => {
-    ctx.beginPath(); // creating new path to draw circle
-    // getting radius for circle according to the mouse pointer
+    ctx.beginPath();r
     let radius = Math.sqrt(Math.pow((prevMouseX - e.offsetX), 2) + Math.pow((prevMouseY - e.offsetY), 2));
-    ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI); // creating circle according to the mouse pointer
-    fillColor.checked ? ctx.fill() : ctx.stroke(); // if fillColor is checked fill circle else draw border circle
+    ctx.arc(prevMouseX, prevMouseY, radius, 0, 2 * Math.PI);
+    fillColor.checked ? ctx.fill() : ctx.stroke(); 
 }
 
 const drawTriangle = (e) => {
-    ctx.beginPath(); // creating new path to draw circle
-    ctx.moveTo(prevMouseX, prevMouseY); // moving triangle to the mouse pointer
-    ctx.lineTo(e.offsetX, e.offsetY); // creating first line according to the mouse pointer
-    ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); // creating bottom line of triangle
-    ctx.closePath(); // closing path of a triangle so the third line draw automatically
-    fillColor.checked ? ctx.fill() : ctx.stroke(); // if fillColor is checked fill triangle else draw border
-}   
-}
+    ctx.beginPath();
+    ctx.moveTo(prevMouseX, prevMouseY); 
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(prevMouseX * 2 - e.offsetX, e.offsetY); 
+    ctx.closePath();
+    fillColor.checked ? ctx.fill() : ctx.stroke();
+} 
+
 function initiateDrawing(e) {
     isDrawing = true;
     prevMouseX = e.offsetX;
