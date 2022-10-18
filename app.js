@@ -112,22 +112,19 @@ const drawingProgress = (e)=>{
       
 }
 clearCanvas.addEventListener("click", () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // clearing whole canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     setBackground();
 });
 
 save_btn.addEventListener("click", () => {
-    // const link = document.createElement("a"); // creating <a> element
-    // link.download = `${Date.now()}.jpg`; // passing current date as link download value
-    // link.href = canvas.toDataURL(); // passing canvasData as link href value
-    // link.click(); // clicking link to download image
    let randomAlpha = 'abcdefghinxJSJSGGismdldldhkvxl'
     randomAlpha = randomAlpha.split("");
     randNum = Math.floor(Math.random() * 30);
-  let  linkUrl = randomAlpha[randNum]
+    let linkUrl = randomAlpha[randNum];
     const linkTag = document.createElement('a');
-    linkTag.download = `${linkUrl, Date.now()}.jpg`;
+    linkTag.download = `${linkUrl}${Date.now()/10}${linkUrl}.jpg`;
     linkTag.href = canvas.toDataURL();
+    linkTag.click();
 });
 
 
