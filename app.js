@@ -94,6 +94,8 @@ function initiateDrawing(e) {
 };
 
 const drawingProgress = (e)=>{
+    if(!isDrawing) return; // if isDrawing is false return from here
+    ctx.putImageData(snapshot, 0, 0);
     if(selectedTool === "brush" || selectedTool === "eraser") {
         ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
         ctx.lineTo(e.offsetX, e.offsetY);
@@ -119,6 +121,7 @@ save_btn.addEventListener("click", () => {
     link.click(); // clicking link to download image
 });
 
-canvas.addEventListener("mousedown", initiateDrawing)
-canvas.addEventListener("mousemove", drawingProgress)
+
+canvas.addEventListener("mousedown",initiateDrawing);
+canvas.addEventListener("mousemove", drawingProgress);
 canvas.addEventListener("mouseup", () => isDrawing = false);
