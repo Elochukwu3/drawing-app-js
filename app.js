@@ -16,21 +16,22 @@ toolBtn =[...toolBtn]
 let prevMouseX, prevMouseY, snapshot,
 isDrawing = false,
 selectedColor = "#000",
-brushWidth = 7;
+brushWidth = brushSlider.value;
 selectedTool = "brush",
 
 window.addEventListener("load", ()=>{
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     setBackground()
-})
+});
+
 function setBackground() {
     canvaWidth = canvas.width;
     canvaHeight = canvas.height;
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvaWidth, canvaHeight );
     ctx.fillStyle = selectedColor;  
-}
+};
 
 colorBtn.forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -38,7 +39,6 @@ colorBtn.forEach(btn=>{
         eachBtn.classList.remove('selected')
         btn.classList.add('selected');
         selectedColor = window.getComputedStyle(btn).background;
-        console.log(selectedColor);
     })
 })
 colo_picker.addEventListener('change', (e)=>{
@@ -56,7 +56,6 @@ toolBtn.forEach(tool=>{
     })
 })
 brushSlider.addEventListener('change', ()=> brushWidth = brushSlider.value)
-console.log(brushWidth);
 
 function drawRectangle(e) {
    switch (fillColor) {
@@ -97,7 +96,7 @@ function initiateDrawing(e) {
 
 const drawingProgress = (e)=>{
     if(!isDrawing) return; 
-    ctx.putImageData(snapshot, 0, 0);
+  ctx.putImageData(snapshot, 0, 0);
     if(selectedTool === "brush" || selectedTool === "eraser") {
         ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
         ctx.lineTo(e.offsetX, e.offsetY);
