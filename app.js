@@ -117,10 +117,18 @@ clearCanvas.addEventListener("click", () => {
 });
 
 save_btn.addEventListener("click", () => {
-    const link = document.createElement("a"); // creating <a> element
-    link.download = `${Date.now()}.jpg`; // passing current date as link download value
-    link.href = canvas.toDataURL(); // passing canvasData as link href value
-    link.click(); // clicking link to download image
+    // const link = document.createElement("a"); // creating <a> element
+    // link.download = `${Date.now()}.jpg`; // passing current date as link download value
+    // link.href = canvas.toDataURL(); // passing canvasData as link href value
+    // link.click(); // clicking link to download image
+   let randomAlpha = 'abcdefghinxJSJSGGismdldldhkvxl'
+    randomAlpha = randomAlpha.split("");
+    console.log( randomAlpha.length);
+    randNum = Math.floor(Math.random() * 30);
+  let  ra = randomAlpha[randNum]
+
+    const linkToImg = document.createElement('a');
+    // linkToImg.download = `${Math.random()* 100}`
 });
 
 
