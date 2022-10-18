@@ -60,6 +60,7 @@ const containerContent = ` <header>Drawing Board</header>
         <canvas id="canvas"></canvas>
       </section>`;
 container.innerHTML = containerContent;
+window.addEventListener('resize', ()=> console.log(window.innerWidth))
 
 const canvas = document.getElementById("canvas"),
   colo_picker = document.getElementById("color-picker"),
