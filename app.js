@@ -59,11 +59,13 @@ brushSlider.addEventListener('change', ()=> brushWidth = brushSlider.value)
 console.log(brushWidth);
 
 function drawRectangle(e) {
-if (!fillColor.checked) {
-    return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
-}else{
-    return ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
-}   
+   switch (fillColor) {
+    case fillColor.checked:
+       return  ctx.fillRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
+       
+    default:
+       return ctx.strokeRect(e.offsetX, e.offsetY, prevMouseX - e.offsetX, prevMouseY - e.offsetX)
+   }  
 }
 
 const drawCircle = (e) => {
@@ -94,7 +96,7 @@ function initiateDrawing(e) {
 };
 
 const drawingProgress = (e)=>{
-    if(!isDrawing) return; // if isDrawing is false return from here
+    if(!isDrawing) return; 
     ctx.putImageData(snapshot, 0, 0);
     if(selectedTool === "brush" || selectedTool === "eraser") {
         ctx.strokeStyle = selectedTool === "eraser" ? "#fff" : selectedColor;
