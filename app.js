@@ -1,6 +1,7 @@
+const container = document.getElementById('page-container')
+const containerContent = ``
 
 const canvas =  document.getElementById("canvas"),
-
 colo_picker = document.getElementById('color-picker'),
 fillColor = document.getElementById('fill-color'),
 brushSlider = document.getElementById('sliderRange'),
