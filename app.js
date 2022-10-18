@@ -123,12 +123,11 @@ save_btn.addEventListener("click", () => {
     // link.click(); // clicking link to download image
    let randomAlpha = 'abcdefghinxJSJSGGismdldldhkvxl'
     randomAlpha = randomAlpha.split("");
-    console.log( randomAlpha.length);
     randNum = Math.floor(Math.random() * 30);
-  let  ra = randomAlpha[randNum]
-
-    const linkToImg = document.createElement('a');
-    // linkToImg.download = `${Math.random()* 100}`
+  let  linkUrl = randomAlpha[randNum]
+    const linkTag = document.createElement('a');
+    linkTag.download = `${linkUrl, Date.now()}.jpg`;
+    linkTag.href = canvas.toDataURL();
 });
 
 
