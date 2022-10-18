@@ -10,14 +10,17 @@ body{
     min-height: 100vh;
 }
 header{
+    display: flex;
+    justify-content: center;
     position: absolute;
-    transform: translate(50%, -50%);
-    width: 90%;
-    font-size: 1.5em;
-    margin:  auto;
+    width: 100%;
+    top: .2rem;
+    font-size: 1.3rem;
+    mix-blend-mode:soft-light;
+    color: #000;
 }
 #page-container{
-    /* margin-top: 10px; */
+    margin-top: 12px;
     width: 100%;
     gap: 10px;
     padding: 10px;
@@ -154,6 +157,19 @@ section{
   }
   #fill-color:checked ~ label{
     color: rgba(0, 175, 76, 0.923);
+
+  }
+  @media screen and (max-width: 400px){
+    #page-container{
+        display: block;
+        height: 70vh;
+    }
+    #tools-board{
+        width: 100%;
+    }
+    .draw-board{
+        height: 50%;
+    }
 
   }
   
